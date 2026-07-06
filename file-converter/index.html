@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TRANSMUTE: File Converter</title>
+  <!-- Favicons - root level for maximum browser compatibility -->
+  <link rel="icon" href="/favicon.ico" sizes="any"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png"/>
+  <link rel="shortcut icon" href="/favicon.ico"/>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json"/>
+
+  <!-- Theme & App Meta -->
+  <meta name="theme-color" content="#f5a623"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="application-name" content="TRANSMUTE"/>
+
+  <!-- iOS specific -->
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="TRANSMUTE"/>
+  <link rel="apple-touch-icon" href="/icons/icon-152.png"/>
+  <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192.png"/>
+  <link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512.png"/>
+
+  <!-- SEO / OG -->
+  <meta name="description" content="Convert PDFs and images locally in your browser. No uploads, no servers, 100% private."/>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Syne+Mono&family=DM+Sans:wght@300;400;500&display=swap"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <!-- Background -->
+  <div class="bg-grid"></div>
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+  <div class="bg-orb orb3"></div>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-logo">
+      <span class="logo-icon">⚗</span>
+      <span class="logo-text">TRANSMUTE</span>
+    </div>
+    <div class="nav-links">
+      <a href="#" class="nav-link active" data-section="home">Home</a>
+      <a href="#" class="nav-link" data-section="pdf-convert">PDF → Any</a>
+      <a href="#" class="nav-link" data-section="img-to-pdf">Image → PDF</a>
+    </div>
+    <div class="nav-badge">100% Local</div>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu hidden" id="mobileMenu">
+    <a href="#" class="mobile-link active" data-section="home">Home</a>
+    <a href="#" class="mobile-link" data-section="pdf-convert">PDF → Any</a>
+    <a href="#" class="mobile-link" data-section="img-to-pdf">Image → PDF</a>
+    <div class="mobile-badge">100% Local · No uploads · Free</div>
+  </div>
+
+  <!-- HOME SECTION -->
+  <section id="home" class="section active">
+    <div class="hero">
+      <div class="hero-label">File Conversion Suite</div>
+      <h1 class="hero-title">
+        Transform<br/>
+        <span class="gradient-text">Any File</span><br/>
+        Instantly.
+      </h1>
+      <p class="hero-sub">All conversions happen locally in your browser. No uploads. No servers. Your files never leave your device.</p>
+      <div class="hero-cards">
+        <button class="tool-card" data-target="pdf-convert">
+          <div class="tool-card-icon">📄→</div>
+          <div class="tool-card-body">
+            <div class="tool-card-title">PDF Converter</div>
+            <div class="tool-card-desc">PDF → Images, Text, Word, HTML</div>
+          </div>
+          <div class="tool-card-arrow">↗</div>
+        </button>
+        <button class="tool-card" data-target="img-to-pdf">
+          <div class="tool-card-icon">🖼→</div>
+          <div class="tool-card-body">
+            <div class="tool-card-title">Image → PDF</div>
+            <div class="tool-card-desc">JPG, PNG, WEBP, GIF → PDF</div>
+          </div>
+          <div class="tool-card-arrow">↗</div>
+        </button>
+      </div>
+      <div class="features-row">
+        <div class="feature-pill">🔒 Private</div>
+        <div class="feature-pill">⚡ Instant</div>
+        <div class="feature-pill">🆓 Free</div>
+        <div class="feature-pill">📴 Offline-ready</div>
+      </div>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div class="hiw-section">
+      <div class="hiw-inner">
+        <div class="hiw-header">
+          <div class="hiw-label">Under the Hood</div>
+          <h2 class="hiw-title">How does this actually work?</h2>
+          <p class="hiw-intro">No magic. No servers. Just your browser doing things most people don't know it can do.</p>
+        </div>
+
+        <!-- Big concept -->
+        <div class="hiw-concept">
+          <div class="concept-left">
+            <div class="concept-tag">The key idea</div>
+            <h3 class="concept-title">Your browser is already a powerful computer</h3>
+            <p class="concept-body">When you visit a website, you're not just downloading pretty pictures and you're running a full program. JavaScript (the language that makes websites interactive) can read files, process data, draw graphics, and create new files entirely inside your browser tab. We just tap into those built-in powers.</p>
+            <p class="concept-body">Think of it like a calculator app so it doesn't need to call a server every time you press a button. It just runs the math locally. TRANSMUTE does the same, but with files.</p>
+          </div>
+          <div class="concept-visual">
+            <div class="cv-box">
+              <div class="cv-label">Normal converter website</div>
+              <div class="cv-flow">
+                <div class="cv-node you">You</div>
+                <div class="cv-arrow">→ upload →</div>
+                <div class="cv-node server bad">Their Server</div>
+                <div class="cv-arrow">→ process →</div>
+                <div class="cv-node server bad">Their Server</div>
+                <div class="cv-arrow">→ download →</div>
+                <div class="cv-node you">You</div>
+              </div>
+              <div class="cv-warning">⚠ Your file leaves your device</div>
+            </div>
+            <div class="cv-box good">
+              <div class="cv-label">TRANSMUTE</div>
+              <div class="cv-flow">
+                <div class="cv-node you">You</div>
+                <div class="cv-arrow local">→ stays here →</div>
+                <div class="cv-node local">Your Browser</div>
+                <div class="cv-arrow local">→ done →</div>
+                <div class="cv-node you">You</div>
+              </div>
+              <div class="cv-good">✓ File never leaves your device</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Libraries -->
+        <div class="hiw-libs-title">The 3 free tools powering this</div>
+        <div class="hiw-libs">
+          <div class="lib-card">
+            <div class="lib-icon">📖</div>
+            <div class="lib-name">PDF.js</div>
+            <div class="lib-by">by Mozilla (Firefox folks)</div>
+            <p class="lib-desc">Normally browsers can <em>display</em> PDFs but can't let code manipulate them. PDF.js unlocks that: it reads the PDF's internal structure and lets us pull out pages, text, and graphics.</p>
+            <div class="lib-used">Used for: PDF → Images, PDF → Text, PDF → HTML</div>
+          </div>
+          <div class="lib-card">
+            <div class="lib-icon">🔨</div>
+            <div class="lib-name">pdf-lib</div>
+            <div class="lib-by">open source</div>
+            <p class="lib-desc">Does the opposite of PDF.js: it <em>builds</em> PDFs from scratch. When you pick images and hit convert, pdf-lib is assembling a brand new PDF document in your computer's memory, page by page.</p>
+            <div class="lib-used">Used for: Images → PDF</div>
+          </div>
+          <div class="lib-card">
+            <div class="lib-icon">📦</div>
+            <div class="lib-name">JSZip</div>
+            <div class="lib-by">open source</div>
+            <p class="lib-desc">When a PDF has 10 pages and you convert them all to images, you'd normally get 10 separate downloads. JSZip bundles them into a single .zip file, all inside the browser.</p>
+            <div class="lib-used">Used for: Multi-file downloads</div>
+          </div>
+        </div>
+
+        <!-- Step by step -->
+        <div class="hiw-steps-title">What happens when you convert a PDF to images</div>
+        <div class="hiw-steps">
+          <div class="step-item">
+            <div class="step-num">01</div>
+            <div class="step-body">
+              <div class="step-title">You pick a file</div>
+              <div class="step-desc">The browser reads it into memory (RAM) using a built-in API called <code>FileReader</code>. The file is now just data, a bunch of bytes, sitting in your browser tab's memory. It hasn't gone anywhere.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">02</div>
+            <div class="step-body">
+              <div class="step-title">PDF.js parses the file</div>
+              <div class="step-desc">PDF is a complex format with its own language inside. PDF.js reads it like a translator: it figures out where each page is, what fonts are used, where images live, and where text is positioned.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">03</div>
+            <div class="step-body">
+              <div class="step-title">Pages are drawn on an invisible canvas</div>
+              <div class="step-desc">The browser has a built-in drawing surface called a <code>&lt;canvas&gt;</code>, think of it as an invisible whiteboard. PDF.js "paints" each page onto it, exactly like how your screen renders graphics in a video game.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">04</div>
+            <div class="step-body">
+              <div class="step-title">Canvas → Image (Blob)</div>
+              <div class="step-desc">The canvas gets converted to a <strong>Blob</strong>: raw file bytes in memory. A Blob is like holding a photo in your hands. It exists, but hasn't been saved to disk yet. Think of RAM vs hard drive.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">05</div>
+            <div class="step-body">
+              <div class="step-title">A fake download link is created</div>
+              <div class="step-desc">JavaScript creates a temporary URL pointing to that Blob (like <code>blob://page-1.png</code>), attaches it to an invisible link, and clicks it automatically. The browser saves the file to your Downloads folder.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">06</div>
+            <div class="step-body">
+              <div class="step-title">Memory is freed</div>
+              <div class="step-desc">Once downloaded, the Blob URL is revoked and memory is cleared. Clean, fast, private. Nothing lingers.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Why need internet once -->
+        <div class="hiw-note">
+          <div class="hiw-note-icon">💡</div>
+          <div>
+            <div class="hiw-note-title">Why does it need internet on the first load?</div>
+            <div class="hiw-note-body">The three libraries (PDF.js, pdf-lib, JSZip) are loaded from a <strong>CDN</strong>, a fast file-hosting service. After the first visit, your browser <strong>caches</strong> them (saves a local copy), so the site works fully offline from then on. Your actual files are never sent anywhere.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <span class="logo-icon">⚗</span>
+          <span class="logo-text">TRANSMUTE</span>
+        </div>
+        <div class="footer-credit">
+          Made with <span class="footer-heart">♥</span> by <span class="footer-name">Ashmit Mohanty</span>
+        </div>
+        <div class="footer-note">100% local · No uploads · No tracking</div>
+      </div>
+    </footer>
+
+  </section>
+
+  <!-- PDF CONVERT SECTION -->
+  <section id="pdf-convert" class="section">
+    <div class="converter-wrapper">
+      <div class="converter-header">
+        <button class="back-btn" data-target="home">← Back</button>
+        <div class="converter-title-group">
+          <h2 class="converter-title">PDF Converter</h2>
+          <p class="converter-sub">Convert your PDF to images, text, or HTML</p>
+        </div>
+      </div>
+
+      <div class="converter-body">
+        <!-- Drop Zone -->
+        <div class="drop-zone" id="pdfDropZone">
+          <div class="drop-icon">📄</div>
+          <div class="drop-title">Drop your PDF here</div>
+          <div class="drop-sub">or click to browse</div>
+          <input type="file" id="pdfFileInput" accept=".pdf" hidden/>
+        </div>
+
+        <!-- File info -->
+        <div class="file-info hidden" id="pdfFileInfo">
+          <div class="file-info-icon">📄</div>
+          <div class="file-info-details">
+            <div class="file-info-name" id="pdfFileName">document.pdf</div>
+            <div class="file-info-meta" id="pdfFileMeta">0 KB</div>
+          </div>
+          <button class="file-remove" id="pdfRemove">✕</button>
+        </div>
+
+        <!-- Format Selector -->
+        <div class="format-selector" id="pdfFormatSelector">
+          <div class="format-label">Convert to:</div>
+          <div class="format-options">
+            <label class="format-opt">
+              <input type="radio" name="pdfFormat" value="images" checked/>
+              <span class="format-btn">
+                <span class="format-btn-icon">🖼</span>
+                <span>Images (PNG)</span>
+              </span>
+            </label>
+            <label class="format-opt">
+              <input type="radio" name="pdfFormat" value="text"/>
+              <span class="format-btn">
+                <span class="format-btn-icon">📝</span>
+                <span>Text (.txt)</span>
+              </span>
+            </label>
+            <label class="format-opt">
+              <input type="radio" name="pdfFormat" value="html"/>
+              <span class="format-btn">
+                <span class="format-btn-icon">🌐</span>
+                <span>HTML</span>
+              </span>
+            </label>
+            <label class="format-opt">
+              <input type="radio" name="pdfFormat" value="jpeg"/>
+              <span class="format-btn">
+                <span class="format-btn-icon">📸</span>
+                <span>Images (JPG)</span>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Convert Button -->
+        <button class="convert-btn hidden" id="pdfConvertBtn">
+          <span class="btn-text">Convert Now</span>
+          <span class="btn-icon">✦</span>
+        </button>
+
+        <!-- Progress -->
+        <div class="progress-wrap hidden" id="pdfProgress">
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="pdfProgressFill"></div>
+          </div>
+          <div class="progress-label" id="pdfProgressLabel">Processing page 1...</div>
+        </div>
+
+        <!-- Results -->
+        <div class="results-section hidden" id="pdfResults">
+          <div class="results-header">
+            <div class="results-title">✓ Conversion Complete</div>
+            <button class="download-all-btn" id="pdfDownloadAll">Download All</button>
+          </div>
+          <div class="results-grid" id="pdfResultsGrid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE TO PDF SECTION -->
+  <section id="img-to-pdf" class="section">
+    <div class="converter-wrapper">
+      <div class="converter-header">
+        <button class="back-btn" data-target="home">← Back</button>
+        <div class="converter-title-group">
+          <h2 class="converter-title">Image → PDF</h2>
+          <p class="converter-sub">Combine one or more images into a single PDF</p>
+        </div>
+      </div>
+
+      <div class="converter-body">
+        <!-- Drop Zone -->
+        <div class="drop-zone multi" id="imgDropZone">
+          <div class="drop-icon">🖼</div>
+          <div class="drop-title">Drop images here</div>
+          <div class="drop-sub">JPG, PNG, WEBP, GIF · multiple files supported</div>
+          <input type="file" id="imgFileInput" accept="image/*" multiple hidden/>
+        </div>
+
+        <!-- Image Queue -->
+        <div class="img-queue hidden" id="imgQueue">
+          <div class="queue-header">
+            <div class="queue-title">Images <span id="imgCount">0</span></div>
+            <div class="queue-actions">
+              <button class="queue-btn" id="imgAddMore">+ Add More</button>
+              <button class="queue-btn danger" id="imgClearAll">Clear All</button>
+            </div>
+          </div>
+          <div class="queue-list" id="imgQueueList"></div>
+          <div class="queue-hint">Drag to reorder</div>
+        </div>
+
+        <!-- PDF Options -->
+        <div class="pdf-options hidden" id="pdfOptions">
+          <div class="option-row">
+            <label class="option-label">Page Size</label>
+            <select class="option-select" id="pageSize">
+              <option value="a4">A4</option>
+              <option value="letter">Letter</option>
+              <option value="fit">Fit to Image</option>
+            </select>
+          </div>
+          <div class="option-row">
+            <label class="option-label">Orientation</label>
+            <select class="option-select" id="pageOrientation">
+              <option value="portrait">Portrait</option>
+              <option value="landscape">Landscape</option>
+            </select>
+          </div>
+          <div class="option-row">
+            <label class="option-label">Margin</label>
+            <select class="option-select" id="pageMargin">
+              <option value="0">None</option>
+              <option value="20" selected>Small (20px)</option>
+              <option value="40">Medium (40px)</option>
+              <option value="60">Large (60px)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Convert Button -->
+        <button class="convert-btn hidden" id="imgConvertBtn">
+          <span class="btn-text">Build PDF</span>
+          <span class="btn-icon">📦</span>
+        </button>
+
+        <!-- Progress -->
+        <div class="progress-wrap hidden" id="imgProgress">
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="imgProgressFill"></div>
+          </div>
+          <div class="progress-label" id="imgProgressLabel">Building PDF...</div>
+        </div>
+
+        <!-- Result -->
+        <div class="results-section hidden" id="imgResult">
+          <div class="results-header">
+            <div class="results-title">✓ PDF Ready!</div>
+            <button class="download-all-btn" id="imgDownloadBtn">Download PDF</button>
+          </div>
+          <div class="pdf-preview-wrap" id="imgPdfPreview"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Android/Windows/Mac Install Banner -->
+  <div class="install-banner" id="install-banner">
+    <div class="install-banner-icon">⚗</div>
+    <div class="install-banner-text">
+      <div class="install-banner-title">Add TRANSMUTE to Home Screen</div>
+      <div class="install-banner-sub">Use it like an app, works offline too</div>
+    </div>
+    <div class="install-banner-actions">
+      <button class="install-yes-btn" id="install-yes">Install</button>
+      <button class="install-no-btn" id="install-no">Not now</button>
+    </div>
+  </div>
+
+  <!-- iOS Safari Instruction Banner -->
+  <div class="ios-banner" id="ios-banner">
+    <div class="ios-banner-header">
+      <div class="ios-banner-title">📱 Add to Home Screen</div>
+      <button class="ios-banner-close" id="ios-close">✕</button>
+    </div>
+    <div class="ios-steps">
+      <div class="ios-step"><div class="ios-step-num">1</div><span>Tap the <strong>Share</strong> button ⬆ at the bottom of Safari</span></div>
+      <div class="ios-step"><div class="ios-step-num">2</div><span>Scroll and tap <strong>Add to Home Screen</strong></span></div>
+      <div class="ios-step"><div class="ios-step-num">3</div><span>Tap <strong>Add</strong> — done!</span></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast hidden" id="toast"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="app.js"></script>
+
+  <style>
+    .install-banner {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(160px);
+      width: calc(100% - 3rem);
+      max-width: 420px;
+      background: #1a1a21;
+      border: 1px solid rgba(255,200,80,0.35);
+      border-radius: 16px;
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.7);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease;
+    }
+    .install-banner.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+    .install-banner-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      background: #0c0c0e;
+      border: 1px solid rgba(245,166,35,0.25);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 1.4rem;
+    }
+    .install-banner-text { flex: 1; min-width: 0; }
+    .install-banner-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem; color: #f0ede8; margin-bottom: 2px; }
+    .install-banner-sub { font-size: 0.72rem; color: #9996a0; line-height: 1.4; }
+    .install-banner-actions { display: flex; flex-direction: column; gap: 0.3rem; flex-shrink: 0; }
+    .install-yes-btn {
+      background: #f5a623; color: #0c0c0e;
+      border: none; border-radius: 8px;
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.75rem;
+      padding: 6px 14px; cursor: pointer; white-space: nowrap;
+    }
+    .install-yes-btn:hover { background: #ffcc5c; }
+    .install-no-btn {
+      background: none; border: none; color: #9996a0;
+      font-size: 0.7rem; cursor: pointer; text-align: center; padding: 2px;
+    }
+    .install-no-btn:hover { color: #f0ede8; }
+
+    .ios-banner {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(160px);
+      width: calc(100% - 3rem);
+      max-width: 400px;
+      background: #1a1a21;
+      border: 1px solid rgba(255,200,80,0.35);
+      border-radius: 16px;
+      padding: 1rem 1.2rem 1.2rem;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.7);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease;
+    }
+    .ios-banner.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+    .ios-banner-header {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+    }
+    .ios-banner-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; color: #f0ede8; }
+    .ios-banner-close {
+      background: none; border: none; color: #9996a0;
+      font-size: 1.1rem; cursor: pointer; padding: 2px 4px;
+      line-height: 1; flex-shrink: 0;
+    }
+    .ios-steps { display: flex; flex-direction: column; gap: 0.55rem; }
+    .ios-step { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.78rem; color: #9996a0; line-height: 1.5; }
+    .ios-step strong { color: #f0ede8; }
+    .ios-step-num {
+      width: 20px; height: 20px; min-width: 20px;
+      border-radius: 50%;
+      background: rgba(245,166,35,0.1);
+      border: 1px solid rgba(245,166,35,0.3);
+      color: #f5a623;
+      font-size: 0.65rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+    }
+  </style>
+
+  <script>
+    // Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+
+    // Handle ?tool= shortcuts
+    window.addEventListener('DOMContentLoaded', () => {
+      const tool = new URLSearchParams(window.location.search).get('tool');
+      if (tool) showSection(tool);
+    });
+
+    const ua = navigator.userAgent;
+    const isIOS = /iphone|ipad|ipod/i.test(ua);
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+    if (isIOS && !isStandalone) {
+      // iOS Safari - show manual instructions
+      const dismissed = sessionStorage.getItem('ios-dismissed');
+      if (!dismissed) {
+        setTimeout(() => document.getElementById('ios-banner').classList.add('show'), 2000);
+      }
+      document.getElementById('ios-close').addEventListener('click', () => {
+        document.getElementById('ios-banner').classList.remove('show');
+        sessionStorage.setItem('ios-dismissed', '1');
+      });
+    } else {
+      // Android / Windows / Mac Chrome & Edge - native install prompt
+      let deferredPrompt = null;
+      window.addEventListener('beforeinstallprompt', e => {
+        e.preventDefault();
+        deferredPrompt = e;
+        setTimeout(() => document.getElementById('install-banner').classList.add('show'), 2000);
+      });
+      document.getElementById('install-yes').addEventListener('click', async () => {
+        document.getElementById('install-banner').classList.remove('show');
+        if (!deferredPrompt) return;
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+        deferredPrompt = null;
+      });
+      document.getElementById('install-no').addEventListener('click', () => {
+        document.getElementById('install-banner').classList.remove('show');
+        deferredPrompt = null;
+      });
+      window.addEventListener('appinstalled', () => {
+        document.getElementById('install-banner').classList.remove('show');
+      });
+    }
+  </script>
+</body>
+</html>
